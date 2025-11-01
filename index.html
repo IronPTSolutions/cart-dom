@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tienda IH - Productos y Carrito</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+  <body class="bg-gray-100 font-sans">
+    <!-- Header -->
+    <header class="bg-white shadow-md">
+      <div class="container mx-auto px-4 py-4">
+        <div class="flex justify-between items-center">
+          <h1 class="text-2xl font-bold text-gray-800">Tienda IH</h1>
+          <div class="flex items-center space-x-4">
+            <button
+              id="cart-toggle"
+              class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg flex items-center"
+            >
+              🛒 Carrito (<span id="cart-count">0</span>)
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="container mx-auto px-4 py-8">
+      <div class="flex flex-col lg:flex-row gap-8">
+        <!-- Products Section -->
+        <div class="lg:w-2/3">
+          <h2 class="text-3xl font-bold text-gray-800 mb-6">
+            Nuestros Productos
+          </h2>
+
+          <!-- Filter Section -->
+          <div class="mb-6 bg-white p-4 rounded-lg shadow">
+            <div class="flex flex-wrap gap-2">
+              <button
+                class="filter-btn bg-gray-200 text-gray-700 px-4 py-2 rounded"
+                data-category="todos"
+              >
+                Todos
+              </button>
+              <button
+                class="filter-btn bg-gray-200 text-gray-700 px-4 py-2 rounded hover:bg-gray-300"
+                data-category="electronica"
+              >
+                Electrónica
+              </button>
+              <button
+                class="filter-btn bg-gray-200 text-gray-700 px-4 py-2 rounded hover:bg-gray-300"
+                data-category="ropa"
+              >
+                Ropa
+              </button>
+              <button
+                class="filter-btn bg-gray-200 text-gray-700 px-4 py-2 rounded hover:bg-gray-300"
+                data-category="hogar"
+              >
+                Hogar
+              </button>
+              <button
+                class="filter-btn bg-gray-200 text-gray-700 px-4 py-2 rounded hover:bg-gray-300"
+                data-category="libros"
+              >
+                Libros
+              </button>
+
+              <input
+                type="text"
+                id="search-input"
+                placeholder="Buscar por nombre o descripción..."
+                class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              />
+            </div>
+          </div>
+
+          <!-- Products Grid -->
+          <div
+            id="products-grid"
+            class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6"
+          >
+            <div
+              id="product-template"
+              class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden"
+            >
+              <img
+                src="https://picsum.photos/300/200?random=1"
+                alt="template"
+                class="w-full h-48 object-cover"
+              />
+              <div class="p-4">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">
+                  TEMPLATE
+                </h3>
+                <p class="text-gray-600 text-sm mb-3">TEMPLATE description</p>
+                <div class="flex justify-between items-center">
+                  <span class="text-2xl font-bold text-blue-600 product-cost"
+                    >€0.00</span
+                  >
+                  <button
+                    class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-colors duration-200 flex items-center"
+                  >
+                    <span class="mr-1">🛒</span> Añadir
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Shopping Cart -->
+        <div class="lg:w-1/3">
+          <div
+            id="shopping-cart"
+            class="bg-white rounded-lg shadow-lg p-6 sticky top-4"
+          >
+            <h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+              🛒 Carrito de Compra
+            </h3>
+
+            <p id="cart-empty" class="text-gray-500 text-center py-8">
+              Tu carrito está vacío
+            </p>
+
+            <div id="cart-items" class="space-y-4 mb-6">
+              <div
+                id="cart-product-template"
+                class="flex items-center bg-gray-50 p-3 rounded-lg"
+              >
+                <img
+                  src="https://picsum.photos/300/200?random=1"
+                  class="w-12 h-12 object-cover rounded mr-3"
+                />
+                <div class="flex-1">
+                  <h4 class="font-medium text-sm text-gray-800">TEMPLATE</h4>
+                  <p class="text-blue-600 font-semibold">0.00</p>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <button
+                    class="qty-sub bg-gray-200 hover:bg-gray-300 text-gray-700 w-6 h-6 rounded text-sm flex items-center justify-center"
+                  >
+                    -
+                  </button>
+                  <span class="font-medium w-8 text-center">1</span>
+                  <button
+                    class="qty-add bg-gray-200 hover:bg-gray-300 text-gray-700 w-6 h-6 rounded text-sm flex items-center justify-center"
+                  >
+                    +
+                  </button>
+                  <button
+                    class="qty-remove bg-red-500 hover:bg-red-600 text-white w-6 h-6 rounded text-sm flex items-center justify-center ml-2"
+                  >
+                    ×
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div id="cart-summary" class="border-t pt-4">
+              <div class="flex justify-between items-center mb-2">
+                <span class="text-gray-600">Subtotal:</span>
+                <span id="cart-subtotal" class="font-semibold">€0.00</span>
+              </div>
+              <div class="flex justify-between items-center mb-2">
+                <span class="text-gray-600">Envío:</span>
+                <span class="font-semibold">5.99 €</span>
+              </div>
+              <div
+                class="flex justify-between items-center text-lg font-bold border-t pt-2"
+              >
+                <span>Total:</span>
+                <span id="cart-total" class="text-blue-600">€5.99</span>
+              </div>
+
+              <button
+                id="checkout-btn"
+                class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg mt-4 transition duration-200"
+              >
+                Proceder al Pago
+              </button>
+
+              <button
+                id="clear-cart"
+                class="w-full bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg mt-2 transition duration-200"
+              >
+                Vaciar Carrito
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="js/products.js"></script>
+  <script src="js/index.js"></script>
+</html>

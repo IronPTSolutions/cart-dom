@@ -1,0 +1,181 @@
+/* Estilos adicionales para la tienda */
+
+/* Animaciones personalizadas */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+/* Animación para productos */
+.product-card {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Hover effects mejorados */
+.product-card:hover {
+    transform: translateY(-5px);
+    transition: transform 0.3s ease;
+}
+
+/* Botones con efectos de hover */
+button {
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Estilo para el carrito fijo */
+#shopping-cart {
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+}
+
+/* Scrollbar personalizado para el carrito */
+#shopping-cart::-webkit-scrollbar {
+    width: 6px;
+}
+
+#shopping-cart::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+#shopping-cart::-webkit-scrollbar-thumb {
+    background: #cbd5e0;
+    border-radius: 3px;
+}
+
+#shopping-cart::-webkit-scrollbar-thumb:hover {
+    background: #a0aec0;
+}
+
+/* Efecto de carga para imágenes */
+img {
+    transition: opacity 0.3s ease;
+}
+
+img:hover {
+    opacity: 0.9;
+}
+
+/* Estilos para filtros activos */
+.filter-btn.active {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive mejoras */
+@media (max-width: 768px) {
+    #shopping-cart {
+        position: static;
+        margin-top: 2rem;
+    }
+    
+    .product-card {
+        margin-bottom: 1rem;
+    }
+}
+
+/* Toast notification styles */
+#toast {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Efectos de carga */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Estilo para productos sin stock (para futuras funcionalidades) */
+.out-of-stock {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.out-of-stock::after {
+    content: "Agotado";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(220, 53, 69, 0.9);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+/* Animación para el contador del carrito */
+#cart-count {
+    transition: all 0.3s ease;
+}
+
+.cart-updated #cart-count {
+    transform: scale(1.2);
+    animation: pulse 0.6s ease-in-out;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+/* Estilos para mejorar la accesibilidad */
+button:focus,
+.filter-btn:focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+}
+
+/* Mejoras en la tipografía */
+.price {
+    font-feature-settings: "tnum";
+}
+
+/* Grid responsive mejorado */
+@media (min-width: 1536px) {
+    #products-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Estados de interacción mejorados */
+.interactive-element {
+    cursor: pointer;
+    user-select: none;
+}
+
+.interactive-element:active {
+    transform: scale(0.98);
+}
+
+/* Sombras suaves para cards */
+.card-shadow {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+.card-shadow:hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+}
